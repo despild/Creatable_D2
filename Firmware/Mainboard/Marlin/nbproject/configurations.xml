@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="Java"
+                   displayName="Java"
+                   projectFiles="true"
+                   root="/Applications/Arduino.app/Contents/Resources/Java">
+      <logicalFolder name="hardware" displayName="hardware" projectFiles="true">
+        <logicalFolder name="arduino" displayName="arduino" projectFiles="true">
+          <logicalFolder name="cores" displayName="cores" projectFiles="true">
+            <logicalFolder name="arduino" displayName="arduino" projectFiles="true">
+              <itemPath>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Arduino.h</itemPath>
+              <itemPath>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/HardwareSerial.h</itemPath>
+              <itemPath>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Print.cpp</itemPath>
+              <itemPath>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Print.h</itemPath>
+              <itemPath>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Printable.h</itemPath>
+              <itemPath>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Stream.h</itemPath>
+              <itemPath>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Tone.cpp</itemPath>
+              <itemPath>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WCharacter.h</itemPath>
+              <itemPath>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WInterrupts.c</itemPath>
+              <itemPath>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WMath.cpp</itemPath>
+              <itemPath>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WString.cpp</itemPath>
+              <itemPath>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WString.h</itemPath>
+              <itemPath>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/binary.h</itemPath>
+              <itemPath>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/main.cpp</itemPath>
+              <itemPath>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/new.h</itemPath>
+              <itemPath>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring.c</itemPath>
+              <itemPath>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_analog.c</itemPath>
+              <itemPath>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_digital.c</itemPath>
+              <itemPath>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_private.h</itemPath>
+              <itemPath>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_pulse.c</itemPath>
+              <itemPath>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_shift.c</itemPath>
+            </logicalFolder>
+          </logicalFolder>
+        </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="libraries" displayName="libraries" projectFiles="true">
+        <logicalFolder name="LiquidCrystal"
+                       displayName="LiquidCrystal"
+                       projectFiles="true">
+          <itemPath>/Applications/Arduino.app/Contents/Resources/Java/libraries/LiquidCrystal/LiquidCrystal.cpp</itemPath>
+          <itemPath>/Applications/Arduino.app/Contents/Resources/Java/libraries/LiquidCrystal/LiquidCrystal.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="SPI" displayName="SPI" projectFiles="true">
+          <itemPath>/Applications/Arduino.app/Contents/Resources/Java/libraries/SPI/SPI.cpp</itemPath>
+          <itemPath>/Applications/Arduino.app/Contents/Resources/Java/libraries/SPI/SPI.h</itemPath>
+        </logicalFolder>
+      </logicalFolder>
+    </logicalFolder>
+    <df root="." name="0">
+      <in>Adafruit_CharacterOLED.cpp</in>
+      <in>ConfigurationStore.cpp</in>
+      <in>MarlinSerial.cpp</in>
+      <in>Marlin_main.cpp</in>
+      <in>Sd2Card.cpp</in>
+      <in>SdBaseFile.cpp</in>
+      <in>SdFatUtil.cpp</in>
+      <in>SdFile.cpp</in>
+      <in>SdVolume.cpp</in>
+      <in>Servo.cpp</in>
+      <in>cardreader.cpp</in>
+      <in>digipot_mcp4451.cpp</in>
+      <in>lifetime_stats.cpp</in>
+      <in>motion_control.cpp</in>
+      <in>planner.cpp</in>
+      <in>qr_solve.cpp</in>
+      <in>stepper.cpp</in>
+      <in>temperature.cpp</in>
+      <in>ultralcd.cpp</in>
+      <in>vector_3.cpp</in>
+      <in>watchdog.cpp</in>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <flagsDictionary>
+        <element flagsID="0" commonFlags="-Os -funsigned-char"/>
+      </flagsDictionary>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f Makefile</buildCommand>
+          <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
+          <executablePath></executablePath>
+          <cTool>
+            <incDir>
+              <pElem>.</pElem>
+              <pElem>applet</pElem>
+              <pElem>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino</pElem>
+              <pElem>/Applications/Arduino.app/Contents/Resources/Java/libraries/LiquidCrystal</pElem>
+              <pElem>/Applications/Arduino.app/Contents/Resources/Java/libraries/SPI</pElem>
+              <pElem>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega</pElem>
+            </incDir>
+            <preprocessorList>
+              <Elem>ARDUINO=106</Elem>
+              <Elem>F_CPU=16000000</Elem>
+              <Elem>MOTHERBOARD=80</Elem>
+            </preprocessorList>
+          </cTool>
+          <ccTool>
+            <incDir>
+              <pElem>.</pElem>
+              <pElem>applet</pElem>
+              <pElem>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino</pElem>
+              <pElem>/Applications/Arduino.app/Contents/Resources/Java/libraries/LiquidCrystal</pElem>
+              <pElem>/Applications/Arduino.app/Contents/Resources/Java/libraries/SPI</pElem>
+              <pElem>/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega</pElem>
+            </incDir>
+            <preprocessorList>
+              <Elem>ARDUINO=106</Elem>
+              <Elem>F_CPU=16000000</Elem>
+              <Elem>MOTHERBOARD=80</Elem>
+            </preprocessorList>
+          </ccTool>
+        </makeTool>
+      </makefileType>
+      <item path="/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Print.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Tone.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WInterrupts.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WMath.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WString.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/main.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_analog.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_digital.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_pulse.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_shift.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+        <cTool flags="0">
+        </cTool>
+      </item>
+      <item path="/Applications/Arduino.app/Contents/Resources/Java/libraries/LiquidCrystal/LiquidCrystal.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="/Applications/Arduino.app/Contents/Resources/Java/libraries/SPI/SPI.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="Adafruit_CharacterOLED.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="ConfigurationStore.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="MarlinSerial.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="Marlin_main.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="Sd2Card.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="SdBaseFile.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="SdFatUtil.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="SdFile.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="SdVolume.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="Servo.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="cardreader.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="digipot_mcp4451.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="lifetime_stats.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="motion_control.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="planner.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="qr_solve.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="stepper.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="temperature.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="ultralcd.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="vector_3.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="watchdog.cpp" ex="false" tool="1" flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
