@@ -1,7 +1,7 @@
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
-//
+//test
 //#define Kossel
 
 // This configuration file contains the basic settings.
