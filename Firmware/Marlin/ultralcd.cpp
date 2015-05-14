@@ -285,6 +285,11 @@ static void lcd_main_menu()
     }
     
     MENU_ITEM(submenu, "Maintenance", lcd_maintenance_menu);
+    if (!(movesplanned() || IS_SD_PRINTING)){
+        if(!((target_temperature_bed == 0) && (target_temperature[0] == 0) &&  (target_temperature[1] == 0 ))){//&& target_temperature[2] == 0)){
+            MENU_ITEM(function, MSG_COOLDOWN, lcd_cooldown);
+        }
+    }
 
 #ifdef SDSUPPORT
     if (card.cardOK)
