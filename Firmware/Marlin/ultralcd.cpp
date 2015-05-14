@@ -138,6 +138,30 @@ static void menu_action_setting_edit_callback_long5(const char* pstr, unsigned l
     }\
     _menuItemNr++;\
 } while(0)
+
+
+
+
+#define MENU_ITEM_CUSTOM(type, label, line, args...) do { \
+    if (_menuItemNr == _lineNr) { \
+        if (lcdDrawUpdate) { \
+            const char* _label_pstr = PSTR(label); \
+            if ((encoderPosition / ENCODER_STEPS_PER_MENU_ITEM) == _menuItemNr) { \
+                lcd_implementation_drawmenu_ ## type ## _selected (line, _label_pstr , ## args ); \
+            }else{\
+                lcd_implementation_drawmenu_ ## type (line, _label_pstr , ## args ); \
+            }\
+        }\
+        if (wasClicked && (encoderPosition / ENCODER_STEPS_PER_MENU_ITEM) == _menuItemNr) {\
+            lcd_quick_feedback(); \
+            menu_action_ ## type ( args ); \
+            return;\
+        }\
+    }\
+    _menuItemNr++;\
+} while(0)
+
+
 #define MENU_ITEM_DUMMY() do { _menuItemNr++; } while(0)
 #define MENU_ITEM_EDIT(type, label, args...) MENU_ITEM(setting_edit_ ## type, label, PSTR(label) , ## args )
 #define MENU_ITEM_EDIT_CALLBACK(type, label, args...) MENU_ITEM(setting_edit_callback_ ## type, label, PSTR(label) , ## args )
@@ -980,6 +1004,26 @@ static void auto_leveling()
     lcd_return_to_status();
 }
 
+static void clean_nozzle()
+{
+
+//    lcd.clear();
+    
+    lcd_implementation_draw_string(0, "  Clean the Nozzle  ");
+    lcd_implementation_draw_string(1, "   OK to Continue   ");
+
+
+    START_MENU();
+
+    MENU_ITEM_CUSTOM(function, MSG_OK, 2, auto_leveling);
+    MENU_ITEM_CUSTOM(back, MSG_BACK, 3, lcd_maintenance_menu);
+    
+    
+    
+    END_MENU();
+
+}
+
 static void goto_home()
 {
     enquecommand_P(PSTR("G28"));
@@ -1146,7 +1190,7 @@ static void lcd_maintenance_menu()
 // TODO
     // MENU_ITEM(function, "Setting Z offset", setting_zoffset);
     MENU_ITEM(function, MSG_MOVE_HOME, goto_home);
-    MENU_ITEM(function, MSG_AUTO_LEVEL, auto_leveling);
+    MENU_ITEM(submenu, MSG_AUTO_LEVEL, clean_nozzle);
 
     MENU_ITEM(submenu, MSG_TEMPERATURE, lcd_control_temperature_menu);
 
