@@ -1015,7 +1015,7 @@ static void clean_nozzle()
 
     START_MENU();
 
-    MENU_ITEM_CUSTOM(function, MSG_OK, 2, auto_leveling);
+    MENU_ITEM_CUSTOM(function, MSG_MENU_OK, 2, auto_leveling);
     MENU_ITEM_CUSTOM(back, MSG_BACK, 3, lcd_maintenance_menu);
     
     

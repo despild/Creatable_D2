@@ -172,7 +172,7 @@
 	#define MSG_CONTROL  "Control"
 	#define MSG_MOVE_HOME  "Home head"
 	#define MSG_BACK  "BACK"
-
+	#define MSG_MENU_OK "OK"
 
 // Serial Console Messages
 
@@ -186,7 +186,7 @@
 	#define MSG_CONFIGURATION_VER " Last Updated: "
 	#define MSG_FREE_MEMORY " Free Memory: "
 	#define MSG_PLANNER_BUFFER_BYTES "  PlannerBufferBytes: "
-	#define MSG_OK "OK"
+	#define MSG_OK "ok"
 	#define MSG_FILE_SAVED "Done saving file."
 	#define MSG_ERR_LINE_NO "Line Number is not Last Line Number+1, Last Line: "
 	#define MSG_ERR_CHECKSUM_MISMATCH "checksum mismatch, Last Line: "
