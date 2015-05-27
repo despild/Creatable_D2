@@ -1,7 +1,7 @@
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
-//test
+//
 //#define Kossel
 
 // This configuration file contains the basic settings.
@@ -244,7 +244,7 @@
 #define MAX_REDUNDANT_TEMP_SENSOR_DIFF 10
 
 // Actual temperature must be close to target for this long before M109 returns success
-#define TEMP_RESIDENCY_TIME 10  // (seconds)
+#define TEMP_RESIDENCY_TIME 3  // (seconds)
 #define TEMP_HYSTERESIS 3       // (degC) range of +/- temperatures considered "close" to the target one
 #define TEMP_WINDOW     1       // (degC) Window around target to start the residency timer x degC early.
 
@@ -255,7 +255,7 @@
 #define HEATER_1_MINTEMP 5
 #define HEATER_2_MINTEMP 5
 #define BED_MINTEMP 5
-
+  
 // When temperature exceeds max temp, your heater will be switched off.
 // This feature exists to protect your hotend from overheating accidentally, but *NOT* from thermistor short/failure!
 // You should use MINTEMP for thermistor short/failure protection.
@@ -277,7 +277,7 @@
 // Comment the following line to disable PID and enable bang-bang.
 #define PIDTEMP
 #define BANG_MAX 255 // limits current to nozzle while in bang-bang mode; 255=full current
-#define PID_MAX 127 // limits current to nozzle while PID is active (see PID_FUNCTIONAL_RANGE below); 255=full current
+#define PID_MAX 120 // limits current to nozzle while PID is active (see PID_FUNCTIONAL_RANGE below); 255=full current
 #ifdef PIDTEMP
   //#define PID_DEBUG // Sends debug data to the serial port.
   //#define PID_OPENLOOP 1 // Puts PID in open loop. M104/M140 sets the output power from 0 to PID_MAX
@@ -291,9 +291,20 @@
 // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
 // Creatable-D2
-    #define  DEFAULT_Kp 6.89
-    #define  DEFAULT_Ki 0.26
-    #define  DEFAULT_Kd 45.47
+
+//    #define  DEFAULT_Kp 6.26
+//    #define  DEFAULT_Ki 0.29
+//    #define  DEFAULT_Kd 33.66
+
+
+    #define  DEFAULT_Kp 7.79
+    #define  DEFAULT_Ki 0.35
+    #define  DEFAULT_Kd 42.76
+
+
+//    #define  DEFAULT_Kp 6.89
+//    #define  DEFAULT_Ki 0.26
+//    #define  DEFAULT_Kd 45.47
 
 // Ultimaker
 //    #define  DEFAULT_Kp 22.2
@@ -356,7 +367,7 @@
 // TEST
 // #define PREVENT_LENGTHY_EXTRUDE
 
-#define EXTRUDE_MINTEMP 180
+#define EXTRUDE_MINTEMP 190
 #define EXTRUDE_MAXLENGTH (X_MAX_LENGTH+Y_MAX_LENGTH) //prevent extrusion of very large distances.
 
 //===========================================================================
@@ -453,8 +464,8 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
 // TODO
 #define OFFSET 0 // 85
   // these are the positions on the bed to do the probing
-  #define DELTA_PROBABLE_RADIUS (DELTA_PRINTABLE_RADIUS - 10)
-//  #define DELTA_PROBABLE_RADIUS (DELTA_PRINTABLE_RADIUS + 4)
+//  #define DELTA_PROBABLE_RADIUS (DELTA_PRINTABLE_RADIUS - 30)
+  #define DELTA_PROBABLE_RADIUS (DELTA_PRINTABLE_RADIUS + 2)
   #define LEFT_PROBE_BED_POSITION -(DELTA_PROBABLE_RADIUS - OFFSET)
   #define RIGHT_PROBE_BED_POSITION (DELTA_PROBABLE_RADIUS - OFFSET)
   #define BACK_PROBE_BED_POSITION (DELTA_PROBABLE_RADIUS - OFFSET)
@@ -464,7 +475,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
   // these are the offsets to the probe relative to the extruder tip (Hotend - Probe)
   #define X_PROBE_OFFSET_FROM_EXTRUDER 0.0
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 0.0
-  #define Z_PROBE_OFFSET_FROM_EXTRUDER 0.30// Increase this if the first layer is too thin. This decreases gap about film thickness
+  #define Z_PROBE_OFFSET_FROM_EXTRUDER 0.35// Increase this if the first layer is too thin. This decreases gap about film thickness
 
   #define Z_RAISE_BEFORE_HOMING 4       // (in mm) Raise Z before homing (G28) for Probe Clearance.
                                         // Be sure you have this distance over your Z_MAX_POS in case
@@ -534,7 +545,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
 //  #define MANUAL_Z_HOME_POS 264  // For delta: Distance between nozzle and print surface after homing.
   #define MANUAL_Z_HOME_POS 260  // For delta: Distance between nozzle and print surface after homing.
 #else
-  #define MANUAL_Z_HOME_POS 175  // For delta: Distance between nozzle and print surface after homing.
+  #define MANUAL_Z_HOME_POS 170  //175  // For delta: Distance between nozzle and print surface after homing.
 #endif 
 //// MOVEMENT SETTINGS
 #define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
@@ -560,7 +571,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
 */
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   {100, 100, 100, 98}
 // #define DEFAULT_AXIS_STEPS_PER_UNIT   {XYZ_STEPS, XYZ_STEPS, XYZ_STEPS, 160} // K800
-// #define DEFAULT_AXIS_STEPS_PER_UNIT   {XYZ_STEPS, XYZ_STEPS, XYZ_STEPS, 96}  // 17HS16-2004S
+// #define DEFAULT_AXIS_STEPS_PER_UNIT   {XYZ_STEPS, XYZ_STEPS, XYZ_STEPS, 73}  // 17HS16-2004S
 #define DEFAULT_AXIS_STEPS_PER_UNIT   {XYZ_STEPS, XYZ_STEPS, XYZ_STEPS, 91.13}  // 17HS24-2104S
 
 // JB ??
@@ -619,7 +630,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
 
 //#define ULTIPANEL  //the UltiPanel as on Thingiverse
 
-//#define LCD_FEEDBACK_FREQUENCY_HZ 1000	// this is the tone frequency the buzzer plays when on UI feedback. ie Screen Click
+//#define LCD_FEEDBACK_FREQUENCY_HZ 1000  // this is the tone frequency the buzzer plays when on UI feedback. ie Screen Click
 //#define LCD_FEEDBACK_FREQUENCY_DURATION_MS 100 // the duration the buzzer plays the UI feedback sound. ie Screen Click
 
 // The MaKr3d Makr-Panel with graphic controller and SD support
@@ -709,17 +720,17 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
   #define ULTIPANEL
 
   #ifndef ENCODER_PULSES_PER_STEP
-	#define ENCODER_PULSES_PER_STEP 4
+  #define ENCODER_PULSES_PER_STEP 4
   #endif
 
   #ifndef ENCODER_STEPS_PER_MENU_ITEM
-	#define ENCODER_STEPS_PER_MENU_ITEM 1
+  #define ENCODER_STEPS_PER_MENU_ITEM 1
   #endif
 
 
   #ifdef LCD_USE_I2C_BUZZER
-	#define LCD_FEEDBACK_FREQUENCY_HZ 1000
-	#define LCD_FEEDBACK_FREQUENCY_DURATION_MS 100
+  #define LCD_FEEDBACK_FREQUENCY_HZ 1000
+  #define LCD_FEEDBACK_FREQUENCY_DURATION_MS 100
   #endif
 
 #endif
@@ -835,5 +846,8 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
 
 #include "Configuration_adv.h"
 #include "thermistortables.h"
+
+#define ENABLE_Z_OFFSET
+
 
 #endif //__CONFIGURATION_H
