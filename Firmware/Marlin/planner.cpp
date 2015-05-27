@@ -62,6 +62,12 @@
 //===========================================================================
 //=============================public variables ============================
 //===========================================================================
+#ifdef ENABLE_Z_OFFSET
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+//Added Code 
+float levelOffset;
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+#endif
 
 unsigned long minsegmenttime;
 float max_feedrate[4]; // set the max speeds
@@ -142,6 +148,17 @@ static int8_t prev_block_index(int8_t block_index) {
 //=============================functions         ============================
 //===========================================================================
 
+#ifdef ENABLE_Z_OFFSET
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+//Added Code 
+void set_level_offset(float offset){
+    levelOffset = offset;   
+}
+float get_level_offset(){
+    return levelOffset;
+}
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+#endif
 // Calculates the distance (not time) it takes to accelerate from initial_rate to target_rate using the 
 // given acceleration:
 FORCE_INLINE float estimate_acceleration_distance(float initial_rate, float target_rate, float acceleration)

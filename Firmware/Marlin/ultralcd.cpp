@@ -93,6 +93,15 @@ static void menu_action_setting_edit_callback_float51(const char* pstr, float* p
 static void menu_action_setting_edit_callback_float52(const char* pstr, float* ptr, float minValue, float maxValue, menuFunc_t callbackFunc);
 static void menu_action_setting_edit_callback_long5(const char* pstr, unsigned long* ptr, unsigned long minValue, unsigned long maxValue, menuFunc_t callbackFunc);
 
+
+static void auto_leveling();
+static void clean_nozzle();
+static void edit_level_offset();
+static void wait_offset();
+static void move_offset();
+static void lcd_move_z();
+
+
 #define ENCODER_FEEDRATE_DEADZONE 10
 
 #if !defined(LCD_I2C_VIKI)
@@ -996,6 +1005,7 @@ static void setting_zoffset()
 }
 #endif
 
+#ifdef ENABLE_AUTO_BED_LEVELING
 // Do auto leveling
 static void auto_leveling()
 {
@@ -1023,6 +1033,129 @@ static void clean_nozzle()
     END_MENU();
 
 }
+#endif
+
+
+//**************************************************
+#ifdef ENABLE_Z_OFFSET
+
+static void print_bed_level() {
+  for (int y = 0; y < ACCURATE_BED_LEVELING_POINTS; y++) {
+    for (int x = 0; x < ACCURATE_BED_LEVELING_POINTS; x++) {
+      SERIAL_PROTOCOL_F(bed_level[x][y], 2);
+      SERIAL_PROTOCOLPGM(" ");
+    }
+    SERIAL_ECHOLN("");
+  }
+  
+  SERIAL_PROTOCOL_F(get_level_offset(),2);
+  SERIAL_ECHOLN("");
+  
+}
+
+
+
+
+static void lcd_move_z()
+{
+    float move_menu_scale=0.1;
+    if (encoderPosition != 0)
+    {
+        refresh_cmd_timeout();
+        current_position[Z_AXIS] -= float((int)encoderPosition) * move_menu_scale;
+        if (min_software_endstops && current_position[Z_AXIS] < Z_MIN_POS)
+            current_position[Z_AXIS] = Z_MIN_POS;
+        if (max_software_endstops && current_position[Z_AXIS] > Z_MAX_POS)
+            current_position[Z_AXIS] = Z_MAX_POS;
+        encoderPosition = 0;
+        #ifdef DELTA
+        calculate_delta(current_position);
+        #ifdef NONLINEAR_BED_LEVELING
+        adjust_delta(current_position);
+        #endif
+        plan_buffer_line(delta[X_AXIS], delta[Y_AXIS], delta[Z_AXIS], current_position[E_AXIS], manual_feedrate[Z_AXIS]/60, active_extruder);
+        #else
+        plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS], current_position[E_AXIS], manual_feedrate[Z_AXIS]/60, active_extruder);
+        #endif
+        lcdDrawUpdate = 1;
+    }
+    if (lcdDrawUpdate)
+    {
+        lcd_implementation_drawedit_custom(3,PSTR("Z"), ftostr31(current_position[Z_AXIS]));
+    }
+    lcd_implementation_draw_string(0, "Rotate the button.  ");
+    lcd_implementation_draw_string(1, "And push it         ");
+    lcd_implementation_draw_string(2, "      to set offset.");
+    if (LCD_CLICKED)
+    {
+        lcd_quick_feedback();
+        
+        set_level_offset(current_position[Z_AXIS]);
+        for(int i = 0 ; i < 3 ; i++){
+            for(int j = 0 ; j < 3 ; j++){
+                bed_level[i][j]+=get_level_offset();
+            }
+        }
+        Config_StoreSettings();
+        print_bed_level();
+        currentMenu = lcd_return_to_status;
+        encoderPosition = 0;
+        
+    }
+}
+
+static void edit_level_offset(){
+    for(int i = 0 ; i < 3 ; i++){
+        for(int j = 0 ; j < 3 ; j++){
+            bed_level[i][j]-=get_level_offset();
+        }
+    }
+    
+    Config_StoreSettings();
+    print_bed_level();
+    enquecommand_P(PSTR("G28"));
+    enquecommand_P(PSTR("G0 Z30 F5000"));
+    enquecommand_P(PSTR("G0 Z5 F1000"));
+    st_synchronize();
+
+    enquecommand_P(PSTR("M400"));           // wait for finishing movement to go to z
+    
+    
+    currentMenu = wait_offset;
+    
+}
+
+static void wait_offset(){
+    lcd_implementation_draw_string(0, "If the movement     ");
+    lcd_implementation_draw_string(1, "        is finished,");
+    lcd_implementation_draw_string(2, "Press the button    ");
+    lcd_implementation_draw_string(3, "        to continue.");
+  
+    
+    if(LCD_CLICKED){
+        encoderPosition = 0;
+        lcdDrawUpdate = 1;
+        currentMenu = move_offset;
+    }
+    
+}
+
+
+static void move_offset(){
+    lcd_implementation_draw_string(0, "Rotate the button.  ");
+    lcd_implementation_draw_string(1, "And push it         ");
+    lcd_implementation_draw_string(2, "      to set offset.");
+    START_MENU();
+    MENU_ITEM(submenu,MSG_MOVE_Z,lcd_move_z);
+    END_MENU();
+
+}
+
+
+#endif
+//**************************************************
+
+
 
 static void goto_home()
 {
@@ -1190,7 +1323,15 @@ static void lcd_maintenance_menu()
 // TODO
     // MENU_ITEM(function, "Setting Z offset", setting_zoffset);
     MENU_ITEM(function, MSG_MOVE_HOME, goto_home);
+#ifdef ENABLE_AUTO_BED_LEVELING
     MENU_ITEM(submenu, MSG_AUTO_LEVEL, clean_nozzle);
+#endif
+   //**************************************************
+#ifdef ENABLE_Z_OFFSET    
+    MENU_ITEM(submenu, "Z OFFSET", edit_level_offset);
+#endif
+    //**************************************************
+    
 
     MENU_ITEM(submenu, MSG_TEMPERATURE, lcd_control_temperature_menu);
 

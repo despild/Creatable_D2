@@ -82,6 +82,10 @@ void Config_StoreSettings()
   EEPROM_WRITE_VAR(i,bed_level[2][1]);
   EEPROM_WRITE_VAR(i,bed_level[2][2]);
   
+  #ifdef ENABLE_Z_OFFSET
+  EEPROM_WRITE_VAR(i,levelOffset);
+  #endif
+
   #ifdef PIDTEMP
     EEPROM_WRITE_VAR(i,Kp);
     EEPROM_WRITE_VAR(i,Ki);
@@ -250,6 +254,10 @@ void Config_RetrieveSettings()
         EEPROM_READ_VAR(i,bed_level[2][0]);
         EEPROM_READ_VAR(i,bed_level[2][1]);
         EEPROM_READ_VAR(i,bed_level[2][2]);
+        
+        #ifdef ENABLE_Z_OFFSET
+        EEPROM_READ_VAR(i,levelOffset);
+        #endif
         
         #ifndef PIDTEMP
         float Kp,Ki,Kd;

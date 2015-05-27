@@ -105,6 +105,13 @@ void plan_set_e_position(const float &e);
 void check_axes_activity();
 uint8_t movesplanned(); //return the nr of buffered moves
 
+#ifdef ENABLE_Z_OFFSET
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+//Added Code 
+extern float levelOffset;
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+#endif
+
 extern unsigned long minsegmenttime;
 extern float max_feedrate[4]; // set the max speeds
 extern float axis_steps_per_unit[4];
@@ -166,4 +173,11 @@ void set_extrude_min_temp(float temp);
 #endif
 
 void reset_acceleration_rates();
+#endif
+
+#ifdef ENABLE_Z_OFFSET
+//**************************************************
+void set_level_offset(float offset);
+float get_level_offset();
+//**************************************************
 #endif
